@@ -1,17 +1,25 @@
-import { makeStyles, CardContent, Card, Chip } from '@material-ui/core';
+import {
+  Button,
+  List,
+  ListItem,
+  ListItemText,
+  makeStyles,
+} from '@material-ui/core';
+import { NotFound } from 'components/NotFound';
+import { SOCKS } from 'data';
 import React, { FC } from 'react';
-import { SOCKS } from '../../data';
-import { useParams } from 'react-router-dom';
-import { NotFound } from '../../components/NotFound';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr',
-    gridGap: theme.spacing(1),
+    display: 'flex',
+    padding: theme.spacing(1),
+    alignItems: 'flex-start',
   },
-  pic: {
-    width: '100%',
+  description: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: theme.spacing(1),
   },
 }));
 
@@ -25,15 +33,35 @@ export const Details: FC = (props) => {
   const img = require(`../../images/socks/${sock.id}.jpg`);
   return (
     <div className={classes.root}>
-      <div></div>
-      <Card>
-        <CardContent>
-          <img className={classes.pic} src={img} alt={sock.name} />
-          {sock.tags.map((tag) => (
-            <Chip label={tag} variant="outlined" />
+      <div>
+        <img src={img} width="340" height="600" alt={sock.name} />
+      </div>
+      <div className={classes.description}>
+        <h1> {sock.name} </h1>
+        <h3>ID: {sock.id}</h3>
+        <List>
+          {sock.descriptions.map((desc) => (
+            <ListItem>
+              <ListItemText primary={desc} />
+            </ListItem>
           ))}
-        </CardContent>
-      </Card>
+        </List>
+        <div className="mik-sizes">
+          <p>Rozmiary</p>
+          <div>
+            {sock.sizes.map((size) => (
+              <div>{size}</div>
+            ))}
+          </div>
+        </div>
+        <hr />
+        <div>
+          Ilość w paczce: <b>{sock.amount} par</b>
+        </div>
+        <Button component={RouterLink} to="/socks">
+          Wróć
+        </Button>
+      </div>
     </div>
   );
 };
