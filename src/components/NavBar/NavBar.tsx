@@ -29,13 +29,13 @@ export const NavBar: FC = (props) => {
           <Button color="inherit" component={RouterLink} to="/">
             Strona główna
           </Button>
-          <Button color="inherit" component={RouterLink} to="socks">
+          <Button color="inherit" component={RouterLink} to="/socks">
             Oferta
           </Button>
-          <Button color="inherit" component={RouterLink} to="about">
+          <Button color="inherit" component={RouterLink} to="/about">
             O Firmie
           </Button>
-          <Button color="inherit" component={RouterLink} to="kontakt">
+          <Button color="inherit" component={RouterLink} to="/kontakt">
             Kontakt
           </Button>
         </Toolbar>

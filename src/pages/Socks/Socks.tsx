@@ -8,6 +8,7 @@ import {
 import React, { FC, useState } from 'react';
 import { SOCKS } from '../../data';
 import { Tag } from 'model';
+import { useHistory } from 'react-router-dom';
 
 const ALL_TAGS: Tag[] = Object.keys(Tag)
   .filter((k: any) => typeof Tag[k] === 'string')
@@ -30,12 +31,19 @@ const useStyles = makeStyles((theme) => ({
     gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr',
     gridGap: theme.spacing(1),
   },
+  sock: {
+    cursor: 'pointer',
+    '&:hover': {
+      boxShadow: theme.shadows[5],
+    },
+  },
   pic: {
     width: '100%',
   },
 }));
 
 export const Socks: FC = (props) => {
+  const history = useHistory();
   const classes = useStyles();
   const [activeTags, setActiveTags] = useState(ALL_TAGS);
 
@@ -74,7 +82,12 @@ export const Socks: FC = (props) => {
         ).map((sock) => {
           const img = require(`../../images/socks/${sock.id}.jpg`);
           return (
-            <Card>
+            <Card
+              classes={{ root: classes.sock }}
+              onClick={() => {
+                history.push(`/skarpeta/${sock.id}`);
+              }}
+            >
               <CardContent>
                 <img className={classes.pic} src={img} alt={sock.name} />
                 {sock.tags.map((tag) => (
