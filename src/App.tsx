@@ -13,10 +13,11 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   main: {
-    margin: theme.spacing(1),
+    overflow: 'auto',
+    padding: theme.spacing(1),
     flex: 1,
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
   },
 }));

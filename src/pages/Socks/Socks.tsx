@@ -4,7 +4,9 @@ import {
   Chip,
   makeStyles,
   Typography,
+  useMediaQuery,
 } from '@material-ui/core';
+import clsx from 'clsx';
 import React, { FC, useState } from 'react';
 import { SOCKS } from '../../data';
 import { Tag } from 'model';
@@ -28,8 +30,14 @@ const useStyles = makeStyles((theme) => ({
   },
   socks: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr',
+    gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: theme.spacing(1),
+  },
+  mediumBig: {
+    gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
+  },
+  socksBig: {
+    gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr',
   },
   sock: {
     cursor: 'pointer',
@@ -43,6 +51,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Socks: FC = (props) => {
+  const mediumSocks = useMediaQuery('(min-width: 600px)');
+  const bigSocks = useMediaQuery('(min-width: 900px)');
+
   const history = useHistory();
   const classes = useStyles();
   const [activeTags, setActiveTags] = useState(ALL_TAGS);
@@ -74,7 +85,12 @@ export const Socks: FC = (props) => {
           );
         })}
       </div>
-      <div className={classes.socks}>
+      <div
+        className={clsx(classes.socks, {
+          [classes.mediumBig]: mediumSocks,
+          [classes.socksBig]: bigSocks,
+        })}
+      >
         {SOCKS.filter((sock) =>
           activeTags.some((active) =>
             sock.tags.some((sockTag) => sockTag === active)
