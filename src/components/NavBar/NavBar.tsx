@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     color: 'inherit',
     flexGrow: 1,
   },
+  paperAnchorLeft: {
+    right: 0,
+  },
 }));
 
 export const NavBar: FC = (props) => {
@@ -66,7 +69,9 @@ export const NavBar: FC = (props) => {
 
       {!matches && (
         <Drawer
-          anchor="left"
+          classes={{
+            paperAnchorLeft: classes.paperAnchorLeft,
+          }}
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
         >
