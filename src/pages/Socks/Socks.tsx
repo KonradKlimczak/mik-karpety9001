@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardContent,
-  Chip,
-  makeStyles,
-  Typography,
-  useMediaQuery,
-} from '@material-ui/core';
+import { Card, CardContent, Chip, makeStyles, Typography, useMediaQuery } from '@material-ui/core';
 import clsx from 'clsx';
 import React, { FC, useState } from 'react';
 import { SOCKS } from '../../data';
@@ -59,27 +52,21 @@ export const Socks: FC = (props) => {
   const [activeTags, setActiveTags] = useState(ALL_TAGS);
 
   const toggleTag = (tag: Tag) => {
-    setActiveTags((tags) =>
-      tags.some((active) => active === tag)
-        ? tags.filter((active) => active !== tag)
-        : [...tags, tag]
-    );
+    setActiveTags((tags) => {
+      return tags.some((active) => active === tag) ? [tag] : [...tags, tag];
+    });
   };
 
   return (
     <div className={classes.root}>
       <div className={classes.filters}>
-        <Typography variant="h6">Filter</Typography>
+        <Typography variant='h6'>Filter</Typography>
         {ALL_TAGS.map((tag) => {
           return (
             <Chip
               className={classes.filter}
               label={tag}
-              color={
-                activeTags.every((active) => active !== tag)
-                  ? 'default'
-                  : 'primary'
-              }
+              color={activeTags.every((active) => active !== tag) ? 'default' : 'primary'}
               onClick={() => toggleTag(tag)}
             />
           );
@@ -91,28 +78,26 @@ export const Socks: FC = (props) => {
           [classes.socksBig]: bigSocks,
         })}
       >
-        {SOCKS.filter((sock) =>
-          activeTags.some((active) =>
-            sock.tags.some((sockTag) => sockTag === active)
-          )
-        ).map((sock) => {
-          const img = require(`../../images/socks/${sock.id}.jpg`);
-          return (
-            <Card
-              classes={{ root: classes.sock }}
-              onClick={() => {
-                history.push(`/skarpeta/${sock.id}`);
-              }}
-            >
-              <CardContent>
-                <img className={classes.pic} src={img} alt={sock.name} />
-                {sock.tags.map((tag) => (
-                  <Chip label={tag} variant="outlined" />
-                ))}
-              </CardContent>
-            </Card>
-          );
-        })}
+        {SOCKS.filter((sock) => activeTags.some((active) => sock.tags.some((sockTag) => sockTag === active))).map(
+          (sock) => {
+            const img = require(`../../images/socks/${sock.id}.jpg`);
+            return (
+              <Card
+                classes={{ root: classes.sock }}
+                onClick={() => {
+                  history.push(`/skarpeta/${sock.id}`);
+                }}
+              >
+                <CardContent>
+                  <img className={classes.pic} src={img} alt={sock.name} />
+                  {sock.tags.map((tag) => (
+                    <Chip label={tag} variant='outlined' />
+                  ))}
+                </CardContent>
+              </Card>
+            );
+          }
+        )}
       </div>
     </div>
   );
