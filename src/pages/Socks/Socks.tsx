@@ -49,7 +49,7 @@ export const Socks: FC = (props) => {
 
   const history = useHistory();
   const classes = useStyles();
-  const [activeTags, setActiveTags] = useState<Tag>([]);
+  const [activeTags, setActiveTags] = useState<Tag[]>([]);
 
   const toggleTag = (tag: Tag) => {
     setActiveTags((tags) => {
