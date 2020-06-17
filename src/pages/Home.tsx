@@ -11,7 +11,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import f01 from '../images/home/f01.jpg';
 import k04 from '../images/home/k04.jpg';
 import m02 from '../images/home/m02.jpg';
-import m05 from '../images/home/m05.jpg';
+import m06 from '../images/home/m06.jpg';
 import m08 from '../images/home/m08.jpg';
 import w01 from '../images/home/w01.jpg';
 import logo from '../images/mik.jpg';
@@ -49,26 +49,36 @@ export const Home: FC = (props) => {
           <Typography>Skarpety od A do Z</Typography>
         </div>
         <div className={classes.socks}>
-          <RouterLink to="contacts">
+          <RouterLink to="/skarpeta/m08">
             <Card>
               <img src={m08} alt="Super Mikołaj" />
             </Card>
           </RouterLink>
-          <Card>
-            <img src={k04} alt="logo" />
-          </Card>
-          <Card>
-            <img src={f01} alt="logo" />
-          </Card>
-          <Card>
-            <img src={m02} alt="logo" />
-          </Card>
-          <Card>
-            <img src={m05} alt="logo" />
-          </Card>
-          <Card>
-            <img src={w01} alt="logo" />
-          </Card>
+          <RouterLink to="/skarpeta/k04">
+            <Card>
+              <img src={k04} alt="Stopki" />
+            </Card>
+          </RouterLink>
+          <RouterLink to="/skarpeta/f01">
+            <Card>
+              <img src={f01} alt="Wzór" />
+            </Card>
+          </RouterLink>
+          <RouterLink to="/skarpeta/m02">
+            <Card>
+              <img src={m02} alt="Exclusive" />
+            </Card>
+          </RouterLink>
+          <RouterLink to="/skarpeta/w01">
+            <Card>
+              <img src={w01} alt="Paski" />
+            </Card>
+          </RouterLink>
+          <RouterLink to="/skarpeta/m06">
+            <Card>
+              <img src={m06} alt="Ciemne Paski" />
+            </Card>
+          </RouterLink>
         </div>
       </div>
       <div className={classes.summary}>
