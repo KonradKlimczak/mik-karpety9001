@@ -5,33 +5,33 @@ import {
   CardContent,
   makeStyles,
   Typography,
-} from '@material-ui/core';
-import React, { FC } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import f01 from '../images/home/f01.jpg';
-import k04 from '../images/home/k04.jpg';
-import m02 from '../images/home/m02.jpg';
-import m06 from '../images/home/m06.jpg';
-import m08 from '../images/home/m08.jpg';
-import w01 from '../images/home/w01.jpg';
-import logo from '../images/mik.jpg';
+} from "@material-ui/core";
+import React, { FC } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import f01 from "../images/home/f01.jpg";
+import k04 from "../images/home/k04.jpg";
+import m02 from "../images/home/m02.jpg";
+import m06 from "../images/home/m06.jpg";
+import m08 from "../images/home/m08.jpg";
+import w01 from "../images/home/w01.jpg";
+import logo from "../images/mik.jpg";
 
 const useStyles = makeStyles((theme) => ({
   main: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   logoInfo: {
     margin: theme.spacing(2),
   },
   socks: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr 1fr",
     gridGap: theme.spacing(1),
   },
   summary: {
-    display: 'flex',
+    display: "flex",
   },
   card: {
     margin: theme.spacing(1),
@@ -87,7 +87,9 @@ export const Home: FC = (props) => {
             <h2>Dołącz do grona zadowolonych klientów</h2>
           </CardContent>
           <CardActions>
-            <Button>Kontakt</Button>
+            <Button component={RouterLink} to="/kontakt">
+              Kontakt
+            </Button>
           </CardActions>
         </Card>
         <Card className={classes.card}>
@@ -99,7 +101,9 @@ export const Home: FC = (props) => {
             </p>
           </CardContent>
           <CardActions>
-            <Button> Dowiedz się wiecej</Button>
+            <Button component={RouterLink} to="/about">
+              Dowiedz się wiecej
+            </Button>
           </CardActions>
         </Card>
       </div>
