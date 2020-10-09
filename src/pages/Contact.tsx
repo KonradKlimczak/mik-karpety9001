@@ -41,14 +41,21 @@ const useStyles = makeStyles(() => ({
 
 export const Contact: FC = (props) => {
   const classes = useStyles();
+  const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
+
+  const handleChangeTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value);
+  };
 
   const handleChangeMessage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMessage(event.target.value);
   };
 
   const handleSubmit = () => {
-    window.open(`mailto:test@example.com?subject=subject&body=${message}`);
+    window.open(
+      `mailto:mik.skarpety@gmail.com?subject=${title}&body=${message}`
+    );
   };
 
   return (
@@ -95,6 +102,8 @@ export const Contact: FC = (props) => {
               label="Tytuł"
               variant="outlined"
               placeholder="Tytuł wiadomości"
+              value={title}
+              onChange={handleChangeTitle}
             />
           </FormControl>
           <FormControl margin="dense">
@@ -104,6 +113,7 @@ export const Contact: FC = (props) => {
               rows={4}
               variant="outlined"
               placeholder="Napisz tutaj wiadomość..."
+              value={message}
               onChange={handleChangeMessage}
             />
           </FormControl>
